@@ -54,15 +54,15 @@ public class ProductoServlet extends HttpServlet {
                     String descripcion=request.getParameter("descripcion");
                     String costo=request.getParameter("costo");
                     String categoria=request.getParameter("categoria");
-                    Part part= request.getPart("foto");
+                   // Part part= request.getPart("foto");
                     double precio = Integer.parseInt(costo);
-                    InputStream inputStream =part.getInputStream();
+                    //InputStream inputStream =part.getInputStream();
                     objBean.setCodigoProducto(idprod);
                     objBean.setCodigoUsuario(id);
                     objBean.setCategoria(categoria);
                     objBean.setCosto(precio);
                     objBean.setDescripcion(descripcion);
-                    objBean.setFoto(inputStream);
+                    //objBean.setFoto(inputStream);
                     objBean.setProducto(producto);
                     
                     objDAO.AgregarProducto(objBean);

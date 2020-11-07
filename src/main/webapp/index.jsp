@@ -15,7 +15,7 @@
     
         <%--- BARRA DE NAVEGACION----%>
         <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-            <a class="navbar-brand" href="#">Vista</a>
+      
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -106,6 +106,7 @@
 
                     <div class="modal-body mx-4">
                         <div class="md-form">
+                             <form action="signin" method="post">
                             <input name="usuario" type="text" class="form-control validate">
                             <label data-error="wrong" data-success="right">Usuario</label>
                         </div>
@@ -119,6 +120,7 @@
 
                         <div class="text-center mb-3">
                             <button type="button" id="validar" class="btn btn-primary btn-block z-depth-1a" data-dismiss="modal">Ingresar</button>
+                             </form>
                         </div>
 
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,52 +29,43 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
  * @author Rodrigo
  */
 @MultipartConfig
+@WebServlet(name = "ProductoServlet",urlPatterns = "/producto")
 public class ProductoServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-    String opcad =request.getParameter("op");
-        int op=Integer.parseInt(opcad);
-       ProductoBEAN objBean = new ProductoBEAN();
-       ProductoDAO objDAO=new ProductoDAO();
-       switch(op){
-            
-                case 1:
-                    int idprod=2;
-                    int id=1;
-                    String producto=request.getParameter("producto");
-                    String descripcion=request.getParameter("descripcion");
-                    String costo=request.getParameter("costo");
-                    String categoria=request.getParameter("categoria");
-                   // Part part= request.getPart("foto");
-                    double precio = Integer.parseInt(costo);
-                    //InputStream inputStream =part.getInputStream();
-                    objBean.setCodigoProducto(idprod);
-                    objBean.setCodigoUsuario(id);
-                    objBean.setCategoria(categoria);
-                    objBean.setCosto(precio);
-                    objBean.setDescripcion(descripcion);
-                    //objBean.setFoto(inputStream);
-                    objBean.setProducto(producto);
-                    
-                    objDAO.AgregarProducto(objBean);
-                    
-                    
-                    break;
-            
-            
-            } 
+    
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
         
+       // String opcad = request.getParameter("op");
         
+        int op = Integer.parseInt(request.getParameter("op"));
+        ProductoBEAN objBean = new ProductoBEAN();
+        ProductoDAO objDAO = new ProductoDAO();
+        switch (op) {
+
+            case 1:
+                int idprod = 2;
+                int id = 1;
+                String producto = request.getParameter("producto");
+                String descripcion = request.getParameter("descripcion");
+                String costo = request.getParameter("costo");
+                String categoria = request.getParameter("categoria");
+                // Part part= request.getPart(request.);
+                double precio = Integer.parseInt(costo);
+                //InputStream inputStream =part.getInputStream();
+                objBean.setCodigoProducto(idprod);
+                objBean.setCodigoUsuario(id);
+                objBean.setCategoria(categoria);
+                objBean.setCosto(precio);
+                objBean.setDescripcion(descripcion);
+                //objBean.setFoto(inputStream);
+                objBean.setProducto(producto);
+
+                objDAO.AgregarProducto(objBean);
+
+                break;
+
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -9,10 +9,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Registro</title>
     </head>
     <body>
-        <form action="ProductoServlet?op=1" method="POST" enctype="multipart/form-data">  
+        <form action="producto" method="POST" enctype="multipart/form-data">  
             
         <div class="custom-file">
         <input name="foto" type="file" class="custom-file-input" id="customFile">

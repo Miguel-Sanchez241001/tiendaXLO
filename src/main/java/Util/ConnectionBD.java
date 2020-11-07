@@ -5,7 +5,8 @@
  */
 package Util;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 
 /**
@@ -14,28 +15,33 @@ import java.sql.*;
  */
 public class ConnectionBD {
 
-   
-   public static Connection getConexionBD(){
-    Connection cn=null;
-        try{
-  
-            Class.forName("com.mysql.jdbc.Driver");
-          cn=DriverManager.getConnection("jdbc:mysql://localhost:3307/xlo","root","");
-             //  cn=DriverManager.getConnection("jdbc:mysql://node1175-env-7822199.usermia-j.elasticserver.co:3306/bdtransporte","root","gG1Z5s2JHm");
+    private static Connection conn;
 
-            System.out.println("Conectado");
-        
+    public static Connection getConexionBD() {
+      if ( conn != null )
+            return conn;
+
+        try {
+            String usuario = "root";
+            String password = "root";
+            String url = "jdbc:mysql://localhost:3306/xlo?useSSL=false&serverTimezone=UTC";
+
+            // Establecer el Driver de conexión
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            conn = DriverManager.getConnection(url, usuario, password);
+
+            System.out.println("Conectamos");
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Algo salio mal :( ");
         }
-        
-        
-        catch(Exception e){
-            System.out.println(e);
-            System.out.println("No conectado");
-    
+        return conn;
     }
-  return cn; }
+
     public static void main(String[] args) {
-    getConexionBD();
+        getConexionBD();
+        
     }
-    
+
 }

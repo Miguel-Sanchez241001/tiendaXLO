@@ -5,6 +5,8 @@
  */
 package Util;
 
+import java.net.UnknownHostException;
+
 /**
  *
  * @author Rodrigo
@@ -15,7 +17,7 @@ public class Main {
         try {
         new ServerSocket(8080).start();
             
-        } catch (Exception e) {
+        } catch (UnknownHostException e) {
         }
     }
     
